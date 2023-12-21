@@ -1,5 +1,6 @@
 LIBHAL_SRC := \
 	common/hal-opencm3.c \
+	common/hal-tracetx-opencm3.c \
 	common/randombytes.c
 
 obj/libpqm4hal.a: $(call objs,$(LIBHAL_SRC))
@@ -64,6 +65,7 @@ $(OPENCM3_DIR)/lib/lib$(LIBNAME).a:
 	$(MAKE) -C $(OPENCM3_DIR) $(OPENCM3_TARGET)
 
 obj/common/hal-opencm3.c.o: $(OPENCM3_DIR)/lib/lib$(LIBNAME).a
+obj/common/hal-tracetx-opencm3.c.o: $(OPENCM3_DIR)/lib/lib$(LIBNAME).a
 
 ifeq ($(wildcard ldscripts/$(PLATFORM).ld),)
 LDSCRIPT = obj/generated.$(DEVICE).ld
